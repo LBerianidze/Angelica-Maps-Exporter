@@ -1,0 +1,11 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<root ProductName='MapFilesImporter'>
+	<Settings>
+		<Version>1.0</Version>
+		<Elements_path>D:\GamesMailRu\Jade Dynasty\element</Elements_path>
+		<Game>Jd</Game>
+		<Destination_Path>C:\Users\Luka\Desktop</Destination_Path>
+		<CreateNewDirectory>True</CreateNewDirectory>
+		<Selected_Map>42</Selected_Map>
+	</Settings>
+</root>

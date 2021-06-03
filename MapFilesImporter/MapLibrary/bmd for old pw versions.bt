@@ -1,0 +1,164 @@
+//--------------------------------------
+//--- 010 Editor v3.1.2 Binary Template
+//
+// File: .bmd
+// Author: Steve Langley
+// Revision: 1
+
+//--------------------------------------
+
+
+struct su
+{
+    for(i = 0; i < vertexCount; i++)
+    {
+        float u_21;
+        float u_21;
+    }
+};
+
+struct vec3 {
+    float x;
+    float y;
+    float z;
+};
+
+struct faces_struct {
+    short one;
+    short two;
+    short three;
+};
+
+struct vertex_struct {
+    vec3 position;
+    int unk_1;  // might be texture index...
+    float u;  
+    float v;
+};
+
+
+struct texture_struct {
+    char name[64] <optimize=false>;
+};
+
+struct mat_struct
+{
+    char header[11];
+    float values[16];
+    float scale;
+    byte isClothing;
+    // ski file this represents scale, is it something different for bmd?
+    if ( scale > 0 )
+        byte unk;
+    
+    // no idea about this yet.
+    //if ( sMark1 > 2 )
+    if(u_3 > 2)
+    {
+        su sU;
+    }
+};
+
+struct unknown_struct {
+    // ski structure has 4 bytes for bone data...is it same?
+    byte un1;
+    byte un2;
+    byte un3;
+    byte un4;
+    byte un5;
+    byte un6;
+    byte un7;
+    byte un8;
+};
+
+struct location_struct {
+    float scaleX;
+    float scaleY;
+    float scaleZ;
+    
+    float directionX;
+    float directionY;
+    float directionZ;
+
+    float upX;
+    float upY;
+    float upZ;
+
+    float positionX;
+    float positionY;
+    float positionZ;
+};
+
+struct mesh_struct
+{
+    int16 version2;
+    int16 u_6;
+    if(u_6 == 1)
+    {
+        byte a;
+    }
+    char name[64];
+    texture_struct text_path[4];
+
+    int vertexCount;
+    int facesCount;
+    if(version2 == 6)
+        byte b;
+
+    vertex_struct vertices[vertexCount] <optimize=false>;
+    faces_struct faces[facesCount] <optimize=false>;
+    vec3 normals[vertexCount] <optimize=false>;
+    unknown_struct unk[vertexCount] <optimize=false>;
+    location_struct location;
+
+    if( version == -2147483647 )
+    {
+        mat_struct material;
+    }
+};
+struct Unknown1
+{
+	int Amount;
+	int Unk1[Amount];
+};
+struct CDBrushes
+{
+    float normalX;
+    float normalY;
+    float normalZ;
+    float distance;
+    byte bevel;
+};
+struct Unknown2
+{
+	float Positions[3];
+	float Extents[3];
+	float Mins[3];
+	float Maxs[3];
+	int flags;
+	int Amount;
+	CDBrushes Brushes[Amount];
+};
+
+struct bmd_struct
+{
+    char header[4];
+    int version;
+    if ( version == -2147483647 )
+        byte collideOnly;
+    else
+        FSeek(FTell()-4);
+
+    int16 u_3;
+    int16 u_33;
+
+    location_struct location;    
+
+    int numModels;
+    mesh_struct mesh[numModels]  <optimize=false> ;
+
+	int UnksAmount;
+	Unknown1 Unks1[UnksAmount]<optimize=false> ;
+	Unknown2 Unks2[UnksAmount]<optimize=false> ;
+	
+} file;
